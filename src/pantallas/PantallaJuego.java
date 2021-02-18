@@ -5,24 +5,18 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ComponentEvent;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Random;
 
 import javax.imageio.ImageIO;
-import javax.swing.JTextArea;
-import javax.swing.SwingUtilities;
-
-import org.w3c.dom.Text;
 
 import principal.PanelJuego;
 import principal.Pantalla;
 import principal.Sprite;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 public class PantallaJuego implements Pantalla {
 
@@ -32,8 +26,6 @@ public class PantallaJuego implements Pantalla {
 
     private static final int ALTO_PRESA = 30;
     private static final int ANCHO_PRESA = 30;
-
-    private static final int NUM_PPRESAS = 17;
 
     private static final int POSX_PRESA1_2 = 430;
     private static final int POSY_PRESA1_2 = 700;
@@ -52,7 +44,6 @@ public class PantallaJuego implements Pantalla {
 
     private static final int POSX_PRESA_6 = 430;
     private static final int POSY_PRESA_6 = 510;
-    ///
 
     private static final int POSX_PRESA_7 = 380;
     private static final int POSY_PRESA_7 = 470;
@@ -92,8 +83,6 @@ public class PantallaJuego implements Pantalla {
     private static double tiempoTranscurrido;
     private DecimalFormat fomateador;
 
-
-
     // Fuentes
     private Font fuenteTiempo;
 
@@ -106,16 +95,11 @@ public class PantallaJuego implements Pantalla {
     private boolean respuestaAcierto;
     private boolean empezarAContar;
 
-
-
-    static String[] letras = { "a" , "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r",
-            "s", "t", "u", "v", "w", "x", "y", "z"};
-
     // constructor de la clase
     public PantallaJuego(PanelJuego panelJuego) {
         this.panelJuego = panelJuego;
         fuenteTiempo = new Font("Arial", Font.BOLD, 30);
-        fomateador = new DecimalFormat("0.00"); 
+        fomateador = new DecimalFormat("0.00");
         respuestaAcierto = true;
         empezarAContar = false;
 
@@ -127,32 +111,45 @@ public class PantallaJuego implements Pantalla {
     @Override
     public void inicalizarPantalla() {
         inicioTiempo = 0.00;
-        // añadir astoides
+        // añado mis presas
         presas = new ArrayList<Sprite>();
-        
 
-            presas.add(new Sprite("speedClimbing/Imagenes/presa1_2.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA1_2, POSY_PRESA1_2));
-            presas.add(new Sprite("speedClimbing/Imagenes/presa1_2.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_2, POSY_PRESA_2));
-            presas.add(new Sprite("speedClimbing/Imagenes/presa3.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_3, POSY_PRESA_3));
-            presas.add(new Sprite("speedClimbing/Imagenes/presa4.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_4, POSY_PRESA_4));
-            presas.add(new Sprite("speedClimbing/Imagenes/presa5.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_5, POSY_PRESA_5));
-            presas.add(new Sprite("speedClimbing/Imagenes/presa6.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_6, POSY_PRESA_6));
-            presas.add(new Sprite("speedClimbing/Imagenes/presa7.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_7, POSY_PRESA_7));
-            presas.add(new Sprite("speedClimbing/Imagenes/presa8.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_8, POSY_PRESA_8));
-            presas.add(new Sprite("speedClimbing/Imagenes/presa9.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_9, POSY_PRESA_9));
-            presas.add(new Sprite("speedClimbing/Imagenes/presa6.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_10, POSY_PRESA_10));
-            presas.add(new Sprite("speedClimbing/Imagenes/presa4.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_11, POSY_PRESA_11));
-            presas.add(new Sprite("speedClimbing/Imagenes/presa3.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_12, POSY_PRESA_12));
-            presas.add(new Sprite("speedClimbing/Imagenes/presa5.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_13, POSY_PRESA_13));
-            presas.add(new Sprite("speedClimbing/Imagenes/presa6.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_14, POSY_PRESA_14));
-            presas.add(new Sprite("speedClimbing/Imagenes/presa3.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_15, POSY_PRESA_15));
-            presas.add(new Sprite("speedClimbing/Imagenes/presa7.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_16, POSY_PRESA_16));
-            presas.add(new Sprite("speedClimbing/Imagenes/presa6.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_17, POSY_PRESA_17)); 
+        presas.add(new Sprite("speedClimbing/Imagenes/presa1_2.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA1_2,
+                POSY_PRESA1_2));
+        presas.add(
+                new Sprite("speedClimbing/Imagenes/presa1_2.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_2, POSY_PRESA_2));
+        presas.add(
+                new Sprite("speedClimbing/Imagenes/presa3.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_3, POSY_PRESA_3));
+        presas.add(
+                new Sprite("speedClimbing/Imagenes/presa4.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_4, POSY_PRESA_4));
+        presas.add(
+                new Sprite("speedClimbing/Imagenes/presa5.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_5, POSY_PRESA_5));
+        presas.add(
+                new Sprite("speedClimbing/Imagenes/presa6.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_6, POSY_PRESA_6));
+        presas.add(
+                new Sprite("speedClimbing/Imagenes/presa7.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_7, POSY_PRESA_7));
+        presas.add(
+                new Sprite("speedClimbing/Imagenes/presa8.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_8, POSY_PRESA_8));
+        presas.add(
+                new Sprite("speedClimbing/Imagenes/presa9.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_9, POSY_PRESA_9));
+        presas.add(
+                new Sprite("speedClimbing/Imagenes/presa6.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_10, POSY_PRESA_10));
+        presas.add(
+                new Sprite("speedClimbing/Imagenes/presa4.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_11, POSY_PRESA_11));
+        presas.add(
+                new Sprite("speedClimbing/Imagenes/presa3.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_12, POSY_PRESA_12));
+        presas.add(
+                new Sprite("speedClimbing/Imagenes/presa5.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_13, POSY_PRESA_13));
+        presas.add(
+                new Sprite("speedClimbing/Imagenes/presa6.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_14, POSY_PRESA_14));
+        presas.add(
+                new Sprite("speedClimbing/Imagenes/presa3.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_15, POSY_PRESA_15));
+        presas.add(
+                new Sprite("speedClimbing/Imagenes/presa7.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_16, POSY_PRESA_16));
+        presas.add(
+                new Sprite("speedClimbing/Imagenes/presa6.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_17, POSY_PRESA_17));
 
-        
-
-        // Inicio mi releentizador de velocidad
-
+        // Pongo en fondo en la pantalla
         fondo = null;
         try {
             fondo = ImageIO.read(new File("speedClimbing/Imagenes/muroP.png"));
@@ -175,25 +172,23 @@ public class PantallaJuego implements Pantalla {
             presa.estampar(g);
         }
 
-        // pinto tiempo
+        // le doy formato al tiempo
         g.setColor(Color.BLACK);
         g.setFont(fuenteTiempo);
 
-        
+        // Compruebo si ha acertado la letra para poder generar la siguiente
         if (respuestaAcierto) {
-            g.drawString(""+letrasAleaorias(), 240, 50);
+            g.drawString("" + letrasAleaorias(), 240, 50);
             respuestaAcierto = false;
-            
-        }else{
-            g.drawString(""+letraActual, 240, 50);
-            /* inicioTiempo = System.nanoTime();
-            fomateador = new DecimalFormat("0.00"); */
+
+        } else {
+            g.drawString("" + letraActual, 240, 50);
         }
-        
+
+        // pinto el tiempo
         g.drawString(fomateador.format(tiempoTranscurrido / 1e9), 360, 60);
     }
 
-   
     /**
      * Método para rellenar el fondo del componente.
      * 
@@ -211,62 +206,29 @@ public class PantallaJuego implements Pantalla {
      */
     public int letrasAleaorias() {
 
-        int numAleatorio = (int)Math.floor(Math.random()*(122-97)+97);
+        int numAleatorio = (int) Math.floor(Math.random() * (122 - 97) + 97);
 
-        letraActual = (char)numAleatorio;
-        return letraActual;  
+        letraActual = (char) numAleatorio;
+        return letraActual;
 
     }
 
     @Override
     public void tocarTeclado(KeyEvent e) {
 
-        
-
         if (letraActual == e.getKeyChar()) {
             empezarAContar = true;
             if (inicioTiempo == 0.00) {
                 inicioTiempo = System.nanoTime();
             }
-            
+
             presas.remove(0);
             respuestaAcierto = true;
-            
-        }else{
+
+        } else {
             panelJuego.cambiarPantalla(new PantallaDerrota(panelJuego));
-          
+
         }
-
-        
-        
-
-       
-    }
-
-   
-    /**
-     * Este etodo comprueba que la nave haya colisionado con el relentizador y si es
-     * asi la velocidad de mis planetas se relentiza Conprueba que la velocidad no
-     * sea 0.
-     */
-    public void colisionMulti() {
-
-    }
-
-    /**
-     * Aqui comprobamos Si el disparo impacta a las asteorides, si es asi ambos
-     * desaparecen. Si la nave colisiona con los asteroides salta la pantalla de
-     * derrota
-     */
-    public void colisiones() {
-
-    }
-
-    /**
-     * Hago que los sprites se muevan por toda la pantalla
-     */
-    public void moverSprites() {
-        // asteroides
 
     }
 
@@ -278,29 +240,22 @@ public class PantallaJuego implements Pantalla {
         panelJuego.setFocusable(true);
         panelJuego.requestFocus();
 
-        if(empezarAContar){
+        if (empezarAContar) {
             try {
                 Thread.sleep(25);
-                
-               
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            
-    
-            
-           
-            colisiones();
-            moverSprites();
+
             ponerTiempo();
-    
+
             // SI has eliminado a todos los asteroides, ganas
             if (presas.size() == 0) {
                 panelJuego.cambiarPantalla(new PantallaVictoria(panelJuego));
             }
 
         }
-        
 
     }
 
@@ -308,7 +263,7 @@ public class PantallaJuego implements Pantalla {
      * Calcula el tiempo transcurrido desde el ultimo refresco
      */
     public void ponerTiempo() {
-       
+
         tiempoTranscurrido = System.nanoTime() - inicioTiempo;
     }
 

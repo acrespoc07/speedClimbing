@@ -59,9 +59,6 @@ public class PantallaInicio implements Pantalla {
     public void pintarPantalla(Graphics g) {
         rellenarFondo(g);
         g.setColor(Color.BLACK);
-        /*
-         * g.fillRect(0, 0, panelJuego.getWidth(), panelJuego.getHeight());
-         */
         g.setColor(colorIntro);
         g.setFont(fuenteGrande);
         g.drawString("SPEED", 100, 250);
@@ -71,17 +68,16 @@ public class PantallaInicio implements Pantalla {
         g.drawString("Alejandro", 640, 700);
         g.drawString("Crespo", 640, 720);
         g.drawString("Cobos", 640, 740);
-
-
     }
     /**
      * Método para rellenar el fondo del componente.
      * 
      * @param g
      */
+
     /*
-     * private void rellenarFondo(Graphics g){ g.drawImage(fondoRedimensionado ,0,
-     * 0, null); }
+     * private void rellenarFondo(Graphics g){ 
+     * g.drawImage(fondoRedimensionado ,0, 0, null); }
      */
 
     /**
@@ -119,9 +115,7 @@ public class PantallaInicio implements Pantalla {
      * Cada vez que se dredimensiona la pantalla la imagen coge toda la superficie
      */
     @Override
-    public void redimensionarPantalla(ComponentEvent e) {
-        // redimensionarFondo();
-    }
+    public void redimensionarPantalla(ComponentEvent e) {}
 
     @Override
     public void tocarTeclado(KeyEvent e) {
@@ -136,12 +130,6 @@ public class PantallaInicio implements Pantalla {
     }
 
     private void redimensionarFondo() {
-       /*  try {
-            Thread.sleep(1);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } */
         fondoRedimensionado = fondo.getScaledInstance(panelJuego.getWidth(), panelJuego.getHeight(),
                 Image.SCALE_SMOOTH);
     } 

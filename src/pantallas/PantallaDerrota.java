@@ -56,14 +56,11 @@ public class PantallaDerrota implements Pantalla {
 
         g.setColor(Color.RED);
         g.setFont(fuenteDerrota);
-        g.drawString("¡Derrota!\n Te has resbalado", 50, 500);
+        g.drawString("¡Derrota! Te has resbalado", 50, 500);
     }
 
     @Override
-    public void ejecutarFrame() {
-        // TODO Auto-generated method stub
-
-    }
+    public void ejecutarFrame() {}
 
     /**
      * Cuando pulso el raton me manda a la pantalla de inicio
@@ -75,10 +72,7 @@ public class PantallaDerrota implements Pantalla {
     }
 
     @Override
-    public void moverRaton(MouseEvent e) {
-        // TODO Auto-generated method stub
-
-    }
+    public void moverRaton(MouseEvent e) {}
 
     /**
      * Cada vez que se dredimensiona la pantalla la imagen coge toda la superficie
@@ -109,9 +103,6 @@ public class PantallaDerrota implements Pantalla {
     }
 
     @Override
-    public void tocarTeclado(KeyEvent e) {
-        // TODO Auto-generated method stub
-
-    }
+    public void tocarTeclado(KeyEvent e) {}
     
 }
