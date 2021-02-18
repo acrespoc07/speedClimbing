@@ -179,10 +179,7 @@ public class PantallaJuego implements Pantalla {
         g.setColor(Color.BLACK);
         g.setFont(fuenteTiempo);
 
-        /* respuestaAcierto = true; */
-       /*  int l = letrasAleaorias();
-        char b= (char) l; */
-
+        
         if (respuestaAcierto) {
             g.drawString(""+letrasAleaorias(), 240, 50);
             respuestaAcierto = false;
@@ -232,12 +229,7 @@ public class PantallaJuego implements Pantalla {
                 inicioTiempo = System.nanoTime();
             }
             
-            
-            /* inicioTiempo = System.nanoTime(); */
             presas.remove(0);
-
-
-
             respuestaAcierto = true;
             
         }else{
