@@ -39,7 +39,7 @@ public class PantallaDerrota implements Pantalla {
 
         fondo = null;
         try {
-            fondo = ImageIO.read(new File("Imagenes/choque.jpg"));
+            fondo = ImageIO.read(new File("Imagenes/ini.jpg"));
         } catch (Exception ioe) {
             ioe.printStackTrace();
         }

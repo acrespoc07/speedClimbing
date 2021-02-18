@@ -46,7 +46,6 @@ public class PanelJuego extends JPanel implements Runnable, MouseListener, Mouse
     public void run() {
         // antes de inciar el hilo se inicializa la pantalla
         pantallaActual.inicalizarPantalla();
-        
 
         while (true) {
             pantallaActual.ejecutarFrame();

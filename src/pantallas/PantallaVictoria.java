@@ -46,7 +46,7 @@ public class PantallaVictoria implements Pantalla {
 
         fondo = null;
         try {
-            fondo = ImageIO.read(new File("Imagenes/vic.jpg"));
+            fondo = ImageIO.read(new File("Imagenes/reza.jpg"));
         } catch (Exception ioe) {
             ioe.printStackTrace();
         }
@@ -62,11 +62,11 @@ public class PantallaVictoria implements Pantalla {
 
         rellenarFondo(g);
 
-        g.setColor(Color.BLUE);
+        g.setColor(Color.GREEN);
         g.setFont(fuenteVictoria);
-        g.drawString("¡Victoria!", 50, 190);
+        g.drawString("¡Victoria!", 50, 190); 
         g.setFont(fuenteVictoriaT);
-        g.drawString(" Tiempo: " + fomateador.format(tiempoVictoria / 1e9), 50, 240);
+        g.drawString(""+ fomateador.format(tiempoVictoria / 1e9), 380, 190);
 
     }
 

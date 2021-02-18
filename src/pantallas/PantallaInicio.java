@@ -17,6 +17,8 @@ public class PantallaInicio implements Pantalla {
     private PanelJuego panelJuego;
     private Color colorIntro = Color.BLACK;
     private Font fuenteGrande;
+    private BufferedImage fondo;
+    private Image fondoRedimensionado;
 
     // fondo
     /*
@@ -36,14 +38,16 @@ public class PantallaInicio implements Pantalla {
     @Override
     public void inicalizarPantalla() {
 
-        /*
-         * fondo = null; try { fondo = ImageIO.read(new File("Imagenes/ini.jpg")); }
-         * catch (Exception ioe) { ioe.printStackTrace(); }
-         */
+        
+        fondo = null;
+        try {
+            fondo = ImageIO.read(new File("Imagenes/ini.jpg"));
+        } catch (Exception ioe) {
+            ioe.printStackTrace();
+        }
         // Ajustar al tamaño actual
-        /*
-         * redimensionarFondo();
-         */
+        redimensionarFondo();
+        
 
     }
 
@@ -52,10 +56,10 @@ public class PantallaInicio implements Pantalla {
      */
     @Override
     public void pintarPantalla(Graphics g) {
-        // rellenarFondo(g);
+        rellenarFondo(g);
         g.setColor(Color.BLACK);
-        g.fillRect(0, 0, panelJuego.getWidth(), panelJuego.getHeight());
-
+        /* g.fillRect(0, 0, panelJuego.getWidth(), panelJuego.getHeight());
+ */
         g.setColor(colorIntro);
         g.setFont(fuenteGrande);
         g.drawString("Bienvenidos a ASTEROIDES 2dam", panelJuego.getWidth() / 2 - 200, 100);
@@ -113,6 +117,16 @@ public class PantallaInicio implements Pantalla {
     public void tocarTeclado(KeyEvent e) {
         // TODO Auto-generated method stub
 
+    }
+    private void rellenarFondo(Graphics g) {
+        
+
+        g.drawImage(fondoRedimensionado, 0, 0, null);
+
+    }
+    private void redimensionarFondo() {
+        fondoRedimensionado = fondo.getScaledInstance(panelJuego.getWidth(), panelJuego.getHeight(),
+                Image.SCALE_SMOOTH);
     }
 
 

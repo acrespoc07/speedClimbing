@@ -101,9 +101,10 @@ public class PantallaJuego implements Pantalla {
     private Image fondoRedimensionado;
     private BufferedImage fondo;
 
-    private int letraActual;
+    private char letraActual;
 
     private boolean respuestaAcierto;
+    private boolean empezarAContar;
 
 
 
@@ -115,8 +116,9 @@ public class PantallaJuego implements Pantalla {
         this.panelJuego = panelJuego;
         fuenteTiempo = new Font("Arial", Font.BOLD, 30);
         inicioTiempo = System.nanoTime();
-        fomateador = new DecimalFormat("0.00");
+        fomateador = new DecimalFormat("0.00"); 
         respuestaAcierto = true;
+        empezarAContar = false;
 
     }
 
@@ -179,13 +181,16 @@ public class PantallaJuego implements Pantalla {
         g.setFont(fuenteTiempo);
 
         /* respuestaAcierto = true; */
-        int l = letrasAleaorias();
-        char b= (char) l;
+       /*  int l = letrasAleaorias();
+        char b= (char) l; */
+
         if (respuestaAcierto) {
-            g.drawString(""+b, 240, 50);
+            g.drawString(""+letrasAleaorias(), 240, 50);
             respuestaAcierto = false;
         }else{
-            g.drawString(""+b, 240, 50);
+            g.drawString(""+letraActual, 240, 50);
+            /* inicioTiempo = System.nanoTime();
+            fomateador = new DecimalFormat("0.00"); */
         }
         
         g.drawString(fomateador.format(tiempoTranscurrido / 1e9), 360, 60);
@@ -208,16 +213,19 @@ public class PantallaJuego implements Pantalla {
      */
     public int letrasAleaorias() {
 
-        letraActual = (int)Math.floor(Math.random()*(122 -97)+97);
-/*          letraActual = (char)numAleatorio;
- */        return letraActual;  
+        int numAleatorio = (int)Math.floor(Math.random()*(122-97)+97);
+
+        letraActual = (char)numAleatorio;
+        return letraActual;  
 
     }
 
     @Override
     public void tocarTeclado(KeyEvent e) {
 
-        if (letraActual == (char)e.getKeyCode()) {
+        
+        if (letraActual == e.getKeyChar()) {
+            empezarAContar = true;
             presas.remove(0);
 
 
@@ -225,9 +233,14 @@ public class PantallaJuego implements Pantalla {
             respuestaAcierto = true;
             
         }else{
-
+            panelJuego.cambiarPantalla(new PantallaDerrota(panelJuego));
+          
         }
 
+        
+        
+
+       
     }
 
    
@@ -262,24 +275,32 @@ public class PantallaJuego implements Pantalla {
      */
     @Override
     public void ejecutarFrame() {
-        try {
-            Thread.sleep(25);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         panelJuego.setFocusable(true);
         panelJuego.requestFocus();
 
-        
-       
-        colisiones();
-        moverSprites();
-        ponerTiempo();
+        if(empezarAContar){
+            try {
+                Thread.sleep(25);
+                
+               
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            
+    
+            
+           
+            colisiones();
+            moverSprites();
+            ponerTiempo();
+    
+            // SI has eliminado a todos los asteroides, ganas
+            if (presas.size() == 0) {
+                panelJuego.cambiarPantalla(new PantallaVictoria(panelJuego));
+            }
 
-        // SI has eliminado a todos los asteroides, ganas
-        if (presas.size() == 0) {
-            panelJuego.cambiarPantalla(new PantallaVictoria(panelJuego));
         }
+        
 
     }
 
@@ -287,6 +308,7 @@ public class PantallaJuego implements Pantalla {
      * Calcula el tiempo transcurrido desde el ultimo refresco
      */
     public void ponerTiempo() {
+       
         tiempoTranscurrido = System.nanoTime() - inicioTiempo;
     }
 
