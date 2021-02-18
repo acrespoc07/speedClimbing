@@ -39,7 +39,7 @@ public class PantallaDerrota implements Pantalla {
 
         fondo = null;
         try {
-            fondo = ImageIO.read(new File("Imagenes/ini.jpg"));
+            fondo = ImageIO.read(new File("speedClimbing/Imagenes/inicio.jpg"));
         } catch (Exception ioe) {
             ioe.printStackTrace();
         }
@@ -54,9 +54,9 @@ public class PantallaDerrota implements Pantalla {
     public void pintarPantalla(Graphics g) {
         rellenarFondo(g);
 
-        g.setColor(Color.LIGHT_GRAY);
+        g.setColor(Color.RED);
         g.setFont(fuenteDerrota);
-        g.drawString("¡Derrota!", 50, 190);
+        g.drawString("¡Derrota!\n Te has resbalado", 50, 500);
     }
 
     @Override

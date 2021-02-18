@@ -15,8 +15,10 @@ import principal.Pantalla;
 
 public class PantallaInicio implements Pantalla {
     private PanelJuego panelJuego;
-    private Color colorIntro = Color.BLACK;
+    private Color colorIntro = Color.RED;
+    private Color colorNombre = Color.BLUE;
     private Font fuenteGrande;
+    private Font fuentePeque;
     private BufferedImage fondo;
     private Image fondoRedimensionado;
 
@@ -28,7 +30,8 @@ public class PantallaInicio implements Pantalla {
     // constructor de la clase
     public PantallaInicio(PanelJuego panelJuego) {
         this.panelJuego = panelJuego;
-        fuenteGrande = new Font("Arial", Font.BOLD, 25);
+        fuenteGrande = new Font("Arial", Font.BOLD, 50);
+        fuentePeque = new Font("Arial", Font.BOLD, 25);
 
     }
 
@@ -38,16 +41,14 @@ public class PantallaInicio implements Pantalla {
     @Override
     public void inicalizarPantalla() {
 
-        
         fondo = null;
         try {
-            fondo = ImageIO.read(new File("Imagenes/ini.jpg"));
+            fondo = ImageIO.read(new File("speedClimbing/Imagenes/ini.jpg"));
         } catch (Exception ioe) {
             ioe.printStackTrace();
         }
         // Ajustar al tamaño actual
         redimensionarFondo();
-        
 
     }
 
@@ -58,11 +59,20 @@ public class PantallaInicio implements Pantalla {
     public void pintarPantalla(Graphics g) {
         rellenarFondo(g);
         g.setColor(Color.BLACK);
-        /* g.fillRect(0, 0, panelJuego.getWidth(), panelJuego.getHeight());
- */
+        /*
+         * g.fillRect(0, 0, panelJuego.getWidth(), panelJuego.getHeight());
+         */
         g.setColor(colorIntro);
         g.setFont(fuenteGrande);
-        g.drawString("Bienvenidos a ASTEROIDES 2dam", panelJuego.getWidth() / 2 - 200, 100);
+        g.drawString("SPEED", 100, 250);
+        g.drawString("CLIMBING", 100, 300);
+        g.setFont(fuentePeque);
+        g.setColor(colorNombre);
+        g.drawString("Alejandro", 640, 700);
+        g.drawString("Crespo", 640, 720);
+        g.drawString("Cobos", 640, 740);
+
+
     }
     /**
      * Método para rellenar el fondo del componente.
@@ -86,8 +96,8 @@ public class PantallaInicio implements Pantalla {
             e.printStackTrace();
         }
         // El color se va cambiando de tono
-        colorIntro = colorIntro == Color.WHITE ? Color.LIGHT_GRAY : Color.WHITE;
-
+        /* colorIntro = colorIntro == Color.RED ? Color.BLACK : Color.RED;
+ */
     }
 
     /**
@@ -118,16 +128,23 @@ public class PantallaInicio implements Pantalla {
         // TODO Auto-generated method stub
 
     }
+
     private void rellenarFondo(Graphics g) {
-        
 
         g.drawImage(fondoRedimensionado, 0, 0, null);
 
     }
+
     private void redimensionarFondo() {
+       /*  try {
+            Thread.sleep(1);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } */
         fondoRedimensionado = fondo.getScaledInstance(panelJuego.getWidth(), panelJuego.getHeight(),
                 Image.SCALE_SMOOTH);
-    }
+    } 
 
 
 }

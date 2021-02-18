@@ -115,7 +115,6 @@ public class PantallaJuego implements Pantalla {
     public PantallaJuego(PanelJuego panelJuego) {
         this.panelJuego = panelJuego;
         fuenteTiempo = new Font("Arial", Font.BOLD, 30);
-        inicioTiempo = System.nanoTime();
         fomateador = new DecimalFormat("0.00"); 
         respuestaAcierto = true;
         empezarAContar = false;
@@ -127,28 +126,28 @@ public class PantallaJuego implements Pantalla {
      */
     @Override
     public void inicalizarPantalla() {
-
+        inicioTiempo = 0.00;
         // añadir astoides
         presas = new ArrayList<Sprite>();
         
 
-            presas.add(new Sprite("Imagenes/presa1_2.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA1_2, POSY_PRESA1_2));
-            presas.add(new Sprite("Imagenes/presa1_2.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_2, POSY_PRESA_2));
-            presas.add(new Sprite("Imagenes/presa3.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_3, POSY_PRESA_3));
-            presas.add(new Sprite("Imagenes/presa4.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_4, POSY_PRESA_4));
-            presas.add(new Sprite("Imagenes/presa5.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_5, POSY_PRESA_5));
-            presas.add(new Sprite("Imagenes/presa6.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_6, POSY_PRESA_6));
-            presas.add(new Sprite("Imagenes/presa7.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_7, POSY_PRESA_7));
-            presas.add(new Sprite("Imagenes/presa8.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_8, POSY_PRESA_8));
-            presas.add(new Sprite("Imagenes/presa9.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_9, POSY_PRESA_9));
-            presas.add(new Sprite("Imagenes/presa6.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_10, POSY_PRESA_10));
-            presas.add(new Sprite("Imagenes/presa4.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_11, POSY_PRESA_11));
-            presas.add(new Sprite("Imagenes/presa3.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_12, POSY_PRESA_12));
-            presas.add(new Sprite("Imagenes/presa5.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_13, POSY_PRESA_13));
-            presas.add(new Sprite("Imagenes/presa6.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_14, POSY_PRESA_14));
-            presas.add(new Sprite("Imagenes/presa3.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_15, POSY_PRESA_15));
-            presas.add(new Sprite("Imagenes/presa7.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_16, POSY_PRESA_16));
-            presas.add(new Sprite("Imagenes/presa6.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_17, POSY_PRESA_17)); 
+            presas.add(new Sprite("speedClimbing/Imagenes/presa1_2.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA1_2, POSY_PRESA1_2));
+            presas.add(new Sprite("speedClimbing/Imagenes/presa1_2.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_2, POSY_PRESA_2));
+            presas.add(new Sprite("speedClimbing/Imagenes/presa3.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_3, POSY_PRESA_3));
+            presas.add(new Sprite("speedClimbing/Imagenes/presa4.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_4, POSY_PRESA_4));
+            presas.add(new Sprite("speedClimbing/Imagenes/presa5.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_5, POSY_PRESA_5));
+            presas.add(new Sprite("speedClimbing/Imagenes/presa6.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_6, POSY_PRESA_6));
+            presas.add(new Sprite("speedClimbing/Imagenes/presa7.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_7, POSY_PRESA_7));
+            presas.add(new Sprite("speedClimbing/Imagenes/presa8.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_8, POSY_PRESA_8));
+            presas.add(new Sprite("speedClimbing/Imagenes/presa9.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_9, POSY_PRESA_9));
+            presas.add(new Sprite("speedClimbing/Imagenes/presa6.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_10, POSY_PRESA_10));
+            presas.add(new Sprite("speedClimbing/Imagenes/presa4.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_11, POSY_PRESA_11));
+            presas.add(new Sprite("speedClimbing/Imagenes/presa3.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_12, POSY_PRESA_12));
+            presas.add(new Sprite("speedClimbing/Imagenes/presa5.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_13, POSY_PRESA_13));
+            presas.add(new Sprite("speedClimbing/Imagenes/presa6.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_14, POSY_PRESA_14));
+            presas.add(new Sprite("speedClimbing/Imagenes/presa3.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_15, POSY_PRESA_15));
+            presas.add(new Sprite("speedClimbing/Imagenes/presa7.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_16, POSY_PRESA_16));
+            presas.add(new Sprite("speedClimbing/Imagenes/presa6.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_17, POSY_PRESA_17)); 
 
         
 
@@ -156,7 +155,7 @@ public class PantallaJuego implements Pantalla {
 
         fondo = null;
         try {
-            fondo = ImageIO.read(new File("Imagenes/muroP.png"));
+            fondo = ImageIO.read(new File("speedClimbing/Imagenes/muroP.png"));
         } catch (Exception ioe) {
             ioe.printStackTrace();
         }
@@ -187,6 +186,7 @@ public class PantallaJuego implements Pantalla {
         if (respuestaAcierto) {
             g.drawString(""+letrasAleaorias(), 240, 50);
             respuestaAcierto = false;
+            
         }else{
             g.drawString(""+letraActual, 240, 50);
             /* inicioTiempo = System.nanoTime();
@@ -196,6 +196,7 @@ public class PantallaJuego implements Pantalla {
         g.drawString(fomateador.format(tiempoTranscurrido / 1e9), 360, 60);
     }
 
+   
     /**
      * Método para rellenar el fondo del componente.
      * 
@@ -224,8 +225,15 @@ public class PantallaJuego implements Pantalla {
     public void tocarTeclado(KeyEvent e) {
 
         
+
         if (letraActual == e.getKeyChar()) {
             empezarAContar = true;
+            if (inicioTiempo == 0.00) {
+                inicioTiempo = System.nanoTime();
+            }
+            
+            
+            /* inicioTiempo = System.nanoTime(); */
             presas.remove(0);
 
 
