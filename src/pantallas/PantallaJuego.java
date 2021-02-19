@@ -18,66 +18,25 @@ import principal.PanelJuego;
 import principal.Pantalla;
 import principal.Sprite;
 
+/**
+ * Ventana Pantalla Juego
+ * @author Alejnadro Crespo Cobos
+ */
+
 public class PantallaJuego implements Pantalla {
 
     private PanelJuego panelJuego;
 
     static ArrayList<Sprite> presas;
 
-    private static final int NUMP = 17;
+    private static final int NUMP = 22;
     private static final int ALTO_PRESA = 30;
     private static final int ANCHO_PRESA = 30;
 
     private static final int POSX_PRESA_1 = 430;
     private static final int POSY_PRESA_1 = 700;
 
-    private static final int POSX_PRESA_2 = 440;
-    private static final int POSY_PRESA_2 = 680;
-
-    private static final int POSX_PRESA_3 = 410;
-    private static final int POSY_PRESA_3 = 630;
-
-    private static final int POSX_PRESA_4 = 360;
-    private static final int POSY_PRESA_4 = 600;
-
-    private static final int POSX_PRESA_5 = 410;
-    private static final int POSY_PRESA_5 = 560;
-
-    private static final int POSX_PRESA_6 = 430;
-    private static final int POSY_PRESA_6 = 510;
-
-    private static final int POSX_PRESA_7 = 380;
-    private static final int POSY_PRESA_7 = 470;
-
-    private static final int POSX_PRESA_8 = 430;
-    private static final int POSY_PRESA_8 = 440;
-
-    private static final int POSX_PRESA_9 = 360;
-    private static final int POSY_PRESA_9 = 395;
-
-    private static final int POSX_PRESA_10 = 380;
-    private static final int POSY_PRESA_10 = 345;
-
-    private static final int POSX_PRESA_11 = 350;
-    private static final int POSY_PRESA_11 = 325;
-
-    private static final int POSX_PRESA_12 = 390;
-    private static final int POSY_PRESA_12 = 280;
-
-    private static final int POSX_PRESA_13 = 370;
-    private static final int POSY_PRESA_13 = 240;
-
-    private static final int POSX_PRESA_14 = 360;
-    private static final int POSY_PRESA_14 = 220;
-
-    private static final int POSX_PRESA_15 = 400;
-    private static final int POSY_PRESA_15 = 170;
-
-    private static final int POSX_PRESA_16 = 430;
-    private static final int POSY_PRESA_16 = 120;
-
-    private static final int POSX_PRESA_17 = 390;
-    private static final int POSY_PRESA_17 = 100;
+    
 
     // Tiempo
     private double inicioTiempo;
@@ -101,6 +60,7 @@ public class PantallaJuego implements Pantalla {
         this.panelJuego = panelJuego;
         fuenteTiempo = new Font("Arial", Font.BOLD, 30);
         fomateador = new DecimalFormat("0.00");
+        tiempoTranscurrido = 0.00;
         respuestaAcierto = true;
         empezarAContar = false;
 
@@ -117,11 +77,11 @@ public class PantallaJuego implements Pantalla {
      */
     @Override
     public void inicalizarPantalla() {
-        inicioTiempo = 0.00;
+        
         // añado mis presas
         presas = new ArrayList<Sprite>();
 
-        for (int i = 1; i < 22; i++) {
+        for (int i = 1; i < NUMP; i++) {
             if(i%2 == 0){
                 anadirPresas("speedClimbing/Imagenes/presa1.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_1 , POSY_PRESA_1 -30 * i);
             }else{
@@ -132,33 +92,6 @@ public class PantallaJuego implements Pantalla {
         }
          
  
-       /*  presas.add(new Sprite("speedClimbing/Imagenes/presa1.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_1, POSY_PRESA_1));
-        presas.add(new Sprite("speedClimbing/Imagenes/presa2.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_2, POSY_PRESA_2));
-        presas.add(new Sprite("speedClimbing/Imagenes/presa3.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_3, POSY_PRESA_3));
-        presas.add(new Sprite("speedClimbing/Imagenes/presa4.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_4, POSY_PRESA_4));
-        presas.add( new Sprite("speedClimbing/Imagenes/presa5.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_5, POSY_PRESA_5));
-        presas.add(new Sprite("speedClimbing/Imagenes/presa6.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_6, POSY_PRESA_6));
-        presas.add(new Sprite("speedClimbing/Imagenes/presa7.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_7, POSY_PRESA_7));
-        presas.add(
-                new Sprite("speedClimbing/Imagenes/presa8.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_8, POSY_PRESA_8));
-        presas.add(
-                new Sprite("speedClimbing/Imagenes/presa9.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_9, POSY_PRESA_9));
-        presas.add(
-                new Sprite("speedClimbing/Imagenes/presa6.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_10, POSY_PRESA_10));
-        presas.add(
-                new Sprite("speedClimbing/Imagenes/presa4.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_11, POSY_PRESA_11));
-        presas.add(
-                new Sprite("speedClimbing/Imagenes/presa3.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_12, POSY_PRESA_12));
-        presas.add(
-                new Sprite("speedClimbing/Imagenes/presa5.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_13, POSY_PRESA_13));
-        presas.add(
-                new Sprite("speedClimbing/Imagenes/presa6.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_14, POSY_PRESA_14));
-        presas.add(
-                new Sprite("speedClimbing/Imagenes/presa3.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_15, POSY_PRESA_15));
-        presas.add(
-                new Sprite("speedClimbing/Imagenes/presa7.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_16, POSY_PRESA_16));
-        presas.add(
-                new Sprite("speedClimbing/Imagenes/presa6.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_17, POSY_PRESA_17)); */
 
         // Pongo en fondo en la pantalla
         fondo = null;
@@ -225,6 +158,9 @@ public class PantallaJuego implements Pantalla {
 
     }
 
+    /**
+     * Este metodo va a capturar las entradas de teclado e ira borrando las presas de la lista 
+     */
     @Override
     public void tocarTeclado(KeyEvent e) {
 
@@ -292,10 +228,10 @@ public class PantallaJuego implements Pantalla {
      * Este metodo ajusta la posicion central de la nave a nuestro cursor para tener
      * mas precision a la hora de disparar
      */
-     @Override
+    /*  @Override
     public void moverRaton(MouseEvent e) {
 
-    } 
+    }  */
 
     /**
      * Cada vez que se dredimensiona la pantalla la imagen coge toda la superficie

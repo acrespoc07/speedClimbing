@@ -13,6 +13,11 @@ import javax.imageio.ImageIO;
 import principal.PanelJuego;
 import principal.Pantalla;
 
+/**
+ * Ventana Pantalla Inicio
+ * @author Alejnadro Crespo Cobos
+ */
+
 public class PantallaInicio implements Pantalla {
     private PanelJuego panelJuego;
     private Color colorIntro = Color.RED;
@@ -102,12 +107,6 @@ public class PantallaInicio implements Pantalla {
     @Override
     public void pulsarRaton(MouseEvent e) {
         panelJuego.cambiarPantalla(new PantallaJuego(panelJuego));
-
-    }
-
-    @Override
-    public void moverRaton(MouseEvent e) {
-        // TODO Auto-generated method stub
 
     }
 

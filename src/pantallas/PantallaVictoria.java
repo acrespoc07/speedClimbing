@@ -14,6 +14,11 @@ import javax.imageio.ImageIO;
 import principal.PanelJuego;
 import principal.Pantalla;
 
+/**
+ * Ventana Pantalla Victoria
+ * @author Alejnadro Crespo Cobos
+ */
+
 public class PantallaVictoria implements Pantalla {
 
     private PanelJuego panelJuego;
@@ -71,10 +76,7 @@ public class PantallaVictoria implements Pantalla {
     }
 
     @Override
-    public void ejecutarFrame() {
-        // TODO Auto-generated method stub
-
-    }
+    public void ejecutarFrame() {}
 
     /**
      * Cuando pulso el raton me manda a la pantalla de inicio
@@ -82,13 +84,6 @@ public class PantallaVictoria implements Pantalla {
     @Override
     public void pulsarRaton(MouseEvent e) {
         panelJuego.cambiarPantalla(new PantallaInicio(panelJuego));
-
-    }
-
-    @Override
-    public void moverRaton(MouseEvent e) {
-        // TODO Auto-generated method stub
-
     }
 
     /**
@@ -117,13 +112,6 @@ public class PantallaVictoria implements Pantalla {
     }
 
     @Override
-    public void tocarTeclado(KeyEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
-    
-
-
-    
+    public void tocarTeclado(KeyEvent e) {}
+  
 }

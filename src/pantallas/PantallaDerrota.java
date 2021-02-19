@@ -14,6 +14,7 @@ import principal.PanelJuego;
 import principal.Pantalla;
 
 /**
+ * Pantalla Deroota
  * @author Alejnadro Crespo Cobos
  */
 
@@ -70,9 +71,6 @@ public class PantallaDerrota implements Pantalla {
         panelJuego.cambiarPantalla(new PantallaInicio(panelJuego));
 
     }
-
-    @Override
-    public void moverRaton(MouseEvent e) {}
 
     /**
      * Cada vez que se dredimensiona la pantalla la imagen coge toda la superficie
