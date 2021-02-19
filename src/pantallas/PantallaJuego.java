@@ -24,11 +24,12 @@ public class PantallaJuego implements Pantalla {
 
     static ArrayList<Sprite> presas;
 
+    private static final int NUMP = 17;
     private static final int ALTO_PRESA = 30;
     private static final int ANCHO_PRESA = 30;
 
-    private static final int POSX_PRESA1_2 = 430;
-    private static final int POSY_PRESA1_2 = 700;
+    private static final int POSX_PRESA_1 = 430;
+    private static final int POSY_PRESA_1 = 700;
 
     private static final int POSX_PRESA_2 = 440;
     private static final int POSY_PRESA_2 = 680;
@@ -105,6 +106,12 @@ public class PantallaJuego implements Pantalla {
 
     }
 
+    public void anadirPresas(String ruta, int ancho, int alto, int posx, int posy){
+
+        presas.add(new Sprite(ruta, ancho, alto, posx, posy));
+
+    }
+
     /***
      * Inicializa mi pantalla con el fondo determinado
      */
@@ -114,20 +121,24 @@ public class PantallaJuego implements Pantalla {
         // añado mis presas
         presas = new ArrayList<Sprite>();
 
-        presas.add(new Sprite("speedClimbing/Imagenes/presa1_2.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA1_2,
-                POSY_PRESA1_2));
-        presas.add(
-                new Sprite("speedClimbing/Imagenes/presa1_2.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_2, POSY_PRESA_2));
-        presas.add(
-                new Sprite("speedClimbing/Imagenes/presa3.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_3, POSY_PRESA_3));
-        presas.add(
-                new Sprite("speedClimbing/Imagenes/presa4.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_4, POSY_PRESA_4));
-        presas.add(
-                new Sprite("speedClimbing/Imagenes/presa5.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_5, POSY_PRESA_5));
-        presas.add(
-                new Sprite("speedClimbing/Imagenes/presa6.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_6, POSY_PRESA_6));
-        presas.add(
-                new Sprite("speedClimbing/Imagenes/presa7.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_7, POSY_PRESA_7));
+        for (int i = 1; i < 22; i++) {
+            if(i%2 == 0){
+                anadirPresas("speedClimbing/Imagenes/presa1.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_1 , POSY_PRESA_1 -30 * i);
+            }else{
+                anadirPresas("speedClimbing/Imagenes/presa1.png", ANCHO_PRESA, ALTO_PRESA, 380 , POSY_PRESA_1 -30 * i);
+
+            }
+            
+        }
+         
+ 
+       /*  presas.add(new Sprite("speedClimbing/Imagenes/presa1.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_1, POSY_PRESA_1));
+        presas.add(new Sprite("speedClimbing/Imagenes/presa2.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_2, POSY_PRESA_2));
+        presas.add(new Sprite("speedClimbing/Imagenes/presa3.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_3, POSY_PRESA_3));
+        presas.add(new Sprite("speedClimbing/Imagenes/presa4.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_4, POSY_PRESA_4));
+        presas.add( new Sprite("speedClimbing/Imagenes/presa5.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_5, POSY_PRESA_5));
+        presas.add(new Sprite("speedClimbing/Imagenes/presa6.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_6, POSY_PRESA_6));
+        presas.add(new Sprite("speedClimbing/Imagenes/presa7.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_7, POSY_PRESA_7));
         presas.add(
                 new Sprite("speedClimbing/Imagenes/presa8.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_8, POSY_PRESA_8));
         presas.add(
@@ -147,7 +158,7 @@ public class PantallaJuego implements Pantalla {
         presas.add(
                 new Sprite("speedClimbing/Imagenes/presa7.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_16, POSY_PRESA_16));
         presas.add(
-                new Sprite("speedClimbing/Imagenes/presa6.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_17, POSY_PRESA_17));
+                new Sprite("speedClimbing/Imagenes/presa6.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_17, POSY_PRESA_17)); */
 
         // Pongo en fondo en la pantalla
         fondo = null;
@@ -178,7 +189,8 @@ public class PantallaJuego implements Pantalla {
 
         // Compruebo si ha acertado la letra para poder generar la siguiente
         if (respuestaAcierto) {
-            g.drawString("" + letrasAleaorias(), 240, 50);
+            int le= (char) letrasAleaorias();
+            g.drawString("" + le, 240, 50);
             respuestaAcierto = false;
 
         } else {
@@ -274,16 +286,16 @@ public class PantallaJuego implements Pantalla {
     @Override
     public void pulsarRaton(MouseEvent e) {
 
-    }
+    } 
 
     /**
      * Este metodo ajusta la posicion central de la nave a nuestro cursor para tener
      * mas precision a la hora de disparar
      */
-    @Override
+     @Override
     public void moverRaton(MouseEvent e) {
 
-    }
+    } 
 
     /**
      * Cada vez que se dredimensiona la pantalla la imagen coge toda la superficie
@@ -310,5 +322,7 @@ public class PantallaJuego implements Pantalla {
     public static double darTiempo() {
         return tiempoTranscurrido;
     }
+
+    
 
 }

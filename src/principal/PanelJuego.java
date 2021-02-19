@@ -150,7 +150,7 @@ public class PanelJuego extends JPanel implements Runnable, MouseListener, Mouse
        
         
         pantallaActual.tocarTeclado(e);
-        System.out.println("2");
+        
 
     }
 
