@@ -85,7 +85,7 @@ public class PantallaJuego implements Pantalla {
             if(i%2 == 0){
                 anadirPresas("speedClimbing/Imagenes/presa1.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_1 , POSY_PRESA_1 -30 * i);
             }else{
-                anadirPresas("speedClimbing/Imagenes/presa1.png", ANCHO_PRESA, ALTO_PRESA, 380 , POSY_PRESA_1 -30 * i);
+                anadirPresas("speedClimbing/Imagenes/presa1.png", ANCHO_PRESA, ALTO_PRESA, 350 , POSY_PRESA_1 -30 * i);
 
             }
             

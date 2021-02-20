@@ -15,6 +15,7 @@ import principal.Pantalla;
 
 /**
  * Ventana Pantalla Inicio
+ * 
  * @author Alejnadro Crespo Cobos
  */
 
@@ -45,7 +46,7 @@ public class PantallaInicio implements Pantalla {
      */
     @Override
     public void inicalizarPantalla() {
-
+       
         fondo = null;
         try {
             fondo = ImageIO.read(new File("speedClimbing/Imagenes/ini.jpg"));
@@ -54,6 +55,7 @@ public class PantallaInicio implements Pantalla {
         }
         // Ajustar al tamaño actual
         redimensionarFondo();
+       
 
     }
 
@@ -63,6 +65,7 @@ public class PantallaInicio implements Pantalla {
     @Override
     public void pintarPantalla(Graphics g) {
         rellenarFondo(g);
+       
         g.setColor(Color.BLACK);
         g.setColor(colorIntro);
         g.setFont(fuenteGrande);
@@ -74,17 +77,7 @@ public class PantallaInicio implements Pantalla {
         g.drawString("Crespo", 640, 720);
         g.drawString("Cobos", 640, 740);
     }
-    /**
-     * Método para rellenar el fondo del componente.
-     * 
-     * @param g
-     */
-
-    /*
-     * private void rellenarFondo(Graphics g){ 
-     * g.drawImage(fondoRedimensionado ,0, 0, null); }
-     */
-
+    
     /**
      * Este metodo se encarga de de la funcionalidad del hilo en esta pantalla
      */
@@ -117,18 +110,18 @@ public class PantallaInicio implements Pantalla {
     public void redimensionarPantalla(ComponentEvent e) {}
 
     @Override
-    public void tocarTeclado(KeyEvent e) {
-        // TODO Auto-generated method stub
-
-    }
+    public void tocarTeclado(KeyEvent e) {}
 
     private void rellenarFondo(Graphics g) {
 
+
         g.drawImage(fondoRedimensionado, 0, 0, null);
 
+        
     }
 
     private void redimensionarFondo() {
+        
         fondoRedimensionado = fondo.getScaledInstance(panelJuego.getWidth(), panelJuego.getHeight(),
                 Image.SCALE_SMOOTH);
     } 

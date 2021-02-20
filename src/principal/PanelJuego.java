@@ -34,6 +34,7 @@ public class PanelJuego extends JPanel implements Runnable, MouseListener, Mouse
     // Método que se llama automáticamente para pintar el componente.
     @Override
     public void paintComponent(Graphics g) {
+       
         pantallaActual.pintarPantalla(g);
     }
     /**
@@ -42,6 +43,7 @@ public class PanelJuego extends JPanel implements Runnable, MouseListener, Mouse
     @Override
     public void run() {
         // antes de inciar el hilo se inicializa la pantalla
+
         pantallaActual.inicalizarPantalla();
         while (true) {
             pantallaActual.ejecutarFrame();
