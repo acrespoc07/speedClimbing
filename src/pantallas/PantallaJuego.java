@@ -27,8 +27,10 @@ public class PantallaJuego implements Pantalla {
 
     private PanelJuego panelJuego;
 
+    //lista donde meto las presas
     static ArrayList<Sprite> presas;
 
+    //constantes necesarias para las presas
     private static final int NUMP = 22;
     private static final int ALTO_PRESA = 30;
     private static final int ANCHO_PRESA = 30;
@@ -50,11 +52,15 @@ public class PantallaJuego implements Pantalla {
     private Image fondoRedimensionado;
     private BufferedImage fondo;
 
+    //variable que ira mostrando la letra a pulsar
     private char letraActual;
 
+    //Comprobadores
     private boolean respuestaAcierto;
     private boolean empezarAContar;
 
+
+      String[] l  = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","u","v","w","x","y","z"};
     // constructor de la clase
     public PantallaJuego(PanelJuego panelJuego) {
         this.panelJuego = panelJuego;
@@ -66,6 +72,14 @@ public class PantallaJuego implements Pantalla {
 
     }
 
+    /**
+     * Este metodo ira añadiendo presas a la lista.
+     * @param ruta
+     * @param ancho
+     * @param alto
+     * @param posx
+     * @param posy
+     */
     public void anadirPresas(String ruta, int ancho, int alto, int posx, int posy){
 
         presas.add(new Sprite(ruta, ancho, alto, posx, posy));
@@ -78,9 +92,10 @@ public class PantallaJuego implements Pantalla {
     @Override
     public void inicalizarPantalla() {
         
-        // añado mis presas
+       
         presas = new ArrayList<Sprite>();
 
+        //me recorro todas las presas que voy a poner y las voy añadiendo a la lista y a su vez a la pantalla
         for (int i = 1; i < NUMP; i++) {
             if(i%2 == 0){
                 anadirPresas("speedClimbing/Imagenes/presa1.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_1 , POSY_PRESA_1 -30 * i);
@@ -144,9 +159,8 @@ public class PantallaJuego implements Pantalla {
     }
 
     /**
-     * Este metodo devuelve la veocidad para mis asteroides la velocidad mayor es de
-     * valor 5 ya que si lo pongo alg mas alta la jugabilidad empeora
-     * 
+     * Este metodo devuelve la letra que va a ir apareciendo en nuestra pantalla
+     * la tengo que convertir a char 
      * @return
      */
     public int letrasAleaorias() {
@@ -158,12 +172,41 @@ public class PantallaJuego implements Pantalla {
 
     }
 
+   public int posAleatoria(){
+        int numAleatorio = (int) Math.floor(Math.random() * 26);
+        return numAleatorio;
+    } 
+
     /**
      * Este metodo va a capturar las entradas de teclado e ira borrando las presas de la lista 
      */
     @Override
     public void tocarTeclado(KeyEvent e) {
 
+       /*  int y = posAleatoria();
+
+        int pos = e.getKeyCode();
+        int posAux = pos - y;
+
+        for (int i = 0; i < l.length; i++) {
+            if (posAux == i) {
+                empezarAContar = true;
+                if (inicioTiempo == 0.00) {
+                    inicioTiempo = System.nanoTime();
+                }
+
+                presas.remove(0);
+                respuestaAcierto = true;
+                
+            }
+            else {
+                panelJuego.cambiarPantalla(new PantallaDerrota(panelJuego));
+    
+            }
+            
+        } */
+
+      
         if (letraActual == e.getKeyChar()) {
             empezarAContar = true;
             if (inicioTiempo == 0.00) {
@@ -173,7 +216,8 @@ public class PantallaJuego implements Pantalla {
             presas.remove(0);
             respuestaAcierto = true;
 
-        } else {
+        }  
+        else {
             panelJuego.cambiarPantalla(new PantallaDerrota(panelJuego));
 
         }
