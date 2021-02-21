@@ -19,7 +19,6 @@ public class PanelJuego extends JPanel implements Runnable, MouseListener, Mouse
 
     private static final long serialVersionUID = 1L;
     private Pantalla pantallaActual;
-
     /**
      * Constructor
      */
