@@ -46,10 +46,12 @@ public class PantallaInicio implements Pantalla {
      */
     @Override
     public void inicalizarPantalla() {
+
+      
        
         fondo = null;
         try {
-            fondo = ImageIO.read(new File("speedClimbing/Imagenes/ini.jpg"));
+            fondo = ImageIO.read(new File("Imagenes/ini.jpg"));
         } catch (Exception ioe) {
             ioe.printStackTrace();
         }

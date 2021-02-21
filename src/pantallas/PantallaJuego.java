@@ -94,13 +94,14 @@ public class PantallaJuego implements Pantalla {
         
        
         presas = new ArrayList<Sprite>();
+      
 
         //me recorro todas las presas que voy a poner y las voy añadiendo a la lista y a su vez a la pantalla
         for (int i = 1; i < NUMP; i++) {
             if(i%2 == 0){
-                anadirPresas("speedClimbing/Imagenes/presa1.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_1 , POSY_PRESA_1 -30 * i);
+                anadirPresas("Imagenes/presa1.png", ANCHO_PRESA, ALTO_PRESA, POSX_PRESA_1 , POSY_PRESA_1 -30 * i);
             }else{
-                anadirPresas("speedClimbing/Imagenes/presa1.png", ANCHO_PRESA, ALTO_PRESA, 350 , POSY_PRESA_1 -30 * i);
+                anadirPresas("Imagenes/presa1.png", ANCHO_PRESA, ALTO_PRESA, 350 , POSY_PRESA_1 -30 * i);
 
             }
             
@@ -111,7 +112,7 @@ public class PantallaJuego implements Pantalla {
         // Pongo en fondo en la pantalla
         fondo = null;
         try {
-            fondo = ImageIO.read(new File("speedClimbing/Imagenes/muroP.png"));
+            fondo = ImageIO.read(new File("Imagenes/muroP.png"));
         } catch (Exception ioe) {
             ioe.printStackTrace();
         }

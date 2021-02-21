@@ -51,7 +51,7 @@ public class PantallaVictoria implements Pantalla {
 
         fondo = null;
         try {
-            fondo = ImageIO.read(new File("speedClimbing/Imagenes/reza.jpg"));
+            fondo = ImageIO.read(new File("Imagenes/reza.jpg"));
         } catch (Exception ioe) {
             ioe.printStackTrace();
         }

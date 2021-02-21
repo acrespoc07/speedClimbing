@@ -40,7 +40,7 @@ public class PantallaDerrota implements Pantalla {
 
         fondo = null;
         try {
-            fondo = ImageIO.read(new File("speedClimbing/Imagenes/inicio.jpg"));
+            fondo = ImageIO.read(new File("Imagenes/inicio.jpg"));
         } catch (Exception ioe) {
             ioe.printStackTrace();
         }
