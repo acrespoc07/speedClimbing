@@ -184,29 +184,6 @@ public class PantallaJuego implements Pantalla {
     @Override
     public void tocarTeclado(KeyEvent e) {
 
-       /*  int y = posAleatoria();
-
-        int pos = e.getKeyCode();
-        int posAux = pos - y;
-
-        for (int i = 0; i < l.length; i++) {
-            if (posAux == i) {
-                empezarAContar = true;
-                if (inicioTiempo == 0.00) {
-                    inicioTiempo = System.nanoTime();
-                }
-
-                presas.remove(0);
-                respuestaAcierto = true;
-                
-            }
-            else {
-                panelJuego.cambiarPantalla(new PantallaDerrota(panelJuego));
-    
-            }
-            
-        } */
-
       
         if (letraActual == e.getKeyChar()) {
             empezarAContar = true;
@@ -268,16 +245,6 @@ public class PantallaJuego implements Pantalla {
     public void pulsarRaton(MouseEvent e) {
 
     } 
-
-    /**
-     * Este metodo ajusta la posicion central de la nave a nuestro cursor para tener
-     * mas precision a la hora de disparar
-     */
-    /*  @Override
-    public void moverRaton(MouseEvent e) {
-
-    }  */
-
     /**
      * Cada vez que se dredimensiona la pantalla la imagen coge toda la superficie
      */

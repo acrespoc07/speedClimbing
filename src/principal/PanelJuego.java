@@ -15,6 +15,11 @@ import javax.swing.JPanel;
 import pantallas.PantallaInicio;
 import pantallas.PantallaJuego;
 
+/**
+ * Ventana Panael de juego
+ * @author Alejandro Crespo Cobos
+ */
+
 public class PanelJuego extends JPanel implements Runnable, MouseListener, MouseMotionListener, ComponentListener, KeyListener {
 
     private static final long serialVersionUID = 1L;

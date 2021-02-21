@@ -16,7 +16,7 @@ import principal.Pantalla;
 
 /**
  * Ventana Pantalla Victoria
- * @author Alejnadro Crespo Cobos
+ * @author Alejandro Crespo Cobos
  */
 
 public class PantallaVictoria implements Pantalla {

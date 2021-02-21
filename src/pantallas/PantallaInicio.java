@@ -16,7 +16,7 @@ import principal.Pantalla;
 /**
  * Ventana Pantalla Inicio
  * 
- * @author Alejnadro Crespo Cobos
+ * @author Alejandro Crespo Cobos
  */
 
 public class PantallaInicio implements Pantalla {
@@ -92,8 +92,7 @@ public class PantallaInicio implements Pantalla {
             e.printStackTrace();
         }
         // El color se va cambiando de tono
-        /* colorIntro = colorIntro == Color.RED ? Color.BLACK : Color.RED;
- */
+  
     }
 
     /**

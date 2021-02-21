@@ -15,7 +15,7 @@ import principal.Pantalla;
 
 /**
  * Pantalla Deroota
- * @author Alejnadro Crespo Cobos
+ * @author Alejandro Crespo Cobos
  */
 
 public class PantallaDerrota implements Pantalla {

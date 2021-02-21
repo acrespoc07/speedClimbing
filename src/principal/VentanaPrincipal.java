@@ -4,7 +4,7 @@ import java.awt.GridLayout;
 import javax.swing.JFrame;
 /**
  * Ventana Principal
- * @author Alejnadro Crespo Cobos
+ * @author Alejandro Crespo Cobos
  */
 public class VentanaPrincipal{
 

@@ -8,6 +8,11 @@ import java.io.File;
 import java.util.Random;
 import javax.imageio.ImageIO;
 
+/**
+ * Clase Sprite
+ * @author Alejandro Crespo Cobos
+ */
+
 public class Sprite {
 
     private BufferedImage buffer;
